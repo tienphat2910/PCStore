@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineClose } from "react-icons/ai";
-import { BiUser } from "react-icons/bi";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Logo from "../../assets/images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
@@ -24,35 +22,21 @@ const Navigation = () => {
         <div
             className="container-fluid"
             style={{
-               
                 boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
                 backgroundColor: '#fff',
             }}>
             <div
                 className="container"
                 style={{
-                width: "100%",
-              
-                padding: "10px 20px",
-                 
-               
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-            }}>
+                    width: "100%",
+                    padding: "10px 20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                }}>
                 {/* Logo */}
-                <Link to="/">
-                    <img
-                        src={Logo}
-                        alt="Logo"
-                        style={{
-                            width: "50px",
-                            height: "50px",
-                            
-                            objectFit: "contain",
-                            backgroundColor: "#fff",cursor: "pointer"
-                        }}
-                    />
+                <Link to="/" className="text-black fw-bold" style={{ fontSize: "20px" }}>
+                    PCStore
                 </Link>
 
                 {/* Conditional Rendering */}
@@ -97,7 +81,7 @@ const Navigation = () => {
                             boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
                         }}
                     >
-                        <CiSearch size={20} color="#007bff" style={{ marginRight: "10px" }} />
+                        <CiSearch size={20} color="#000" style={{ marginRight: "10px" }} />
                         <input
                             type="text"
                             placeholder="Search entire store here..."
@@ -107,6 +91,7 @@ const Navigation = () => {
                                 width: "100%",
                                 fontSize: "14px",
                                 backgroundColor: "transparent",
+                                color: "#000",
                             }}
                             autoFocus
                         />
@@ -125,14 +110,14 @@ const Navigation = () => {
                     {showSearch ? (
                         <AiOutlineClose
                             size={24}
-                            color="#007bff"
+                            color="#000"
                             style={{ cursor: "pointer" }}
                             onClick={() => setShowSearch(false)}
                         />
                     ) : (
                         <CiSearch
                             size={24}
-                             
+
                             style={{ cursor: "pointer" }}
                             onClick={() => setShowSearch(true)}
                         />
