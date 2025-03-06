@@ -22,7 +22,7 @@ const ProductSection = ({ title, products, seeAllLink, brandImage }) => {
             <h2 className="">{title}</h2>
           </div>
           <div className="col text-end">
-            <a href={seeAllLink} className="text-decoration-underline">
+            <a href={seeAllLink} className="text-decoration-underline" style={{ color: "#9933CC" }}>
               {seeAllLink}
             </a>
           </div>

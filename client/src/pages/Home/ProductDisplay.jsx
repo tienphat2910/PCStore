@@ -298,7 +298,7 @@ const ProductDisplay = () => {
         <img src={IMAGES.Banner} alt="banner" className="w-100" />
       </div>
 
-      <ProductSection title="New Products" products={newProducts} seeAllLink="See All New Products" />
+      <ProductSection title="Sản phẩm mới" products={newProducts} seeAllLink="Hiển thị tất cả" />
 
       <div className="container my-5 py-4 text-white" style={{ backgroundColor: "#F5F7FF" }}>
         <div className="d-flex align-items-center justify-content-center ">
