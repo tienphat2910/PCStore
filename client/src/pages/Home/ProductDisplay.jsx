@@ -294,9 +294,19 @@ const ProductDisplay = () => {
 
   return (
     <div className="container-fluid bg-light py-5">
-      <div className="container">
-        <img src={IMAGES.Banner} alt="banner" className="w-100" />
+      <div className="container d-flex justify-content-center align-items-center">
+        <img
+          src={IMAGES.Banner}
+          alt="banner"
+          style={{
+            objectFit: "cover", // Đảm bảo ảnh không bị kéo giãn
+            width: "100%", // Đảm bảo ảnh chiếm hết chiều rộng
+            height: "auto", // Giữ tỷ lệ ảnh
+          }}
+        />
       </div>
+
+
 
       <ProductSection title="Sản phẩm mới" products={newProducts} seeAllLink="Hiển thị tất cả" />
 
