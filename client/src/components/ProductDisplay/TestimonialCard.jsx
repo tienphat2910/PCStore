@@ -58,7 +58,7 @@ ActionButton.propTypes = {
 const TestimonialSection = () => {
   const testimonialData = {
     quote:
-      "Đơn hàng đầu tiên của tôi đã đến hôm nay trong tình trạng hoàn hảo. Từ lúc tôi gửi câu hỏi về sản phẩm đến khi mua hàng, vận chuyển và bây giờ là giao hàng. Nhân viên của bạn, Trực, đã luôn giữ liên lạc. Dịch vụ thật tuyệt vời. Tôi mong được mua sắm trên trang web của bạn trong tương lai và chắc chắn sẽ giới thiệu nó cho mọi người.",
+      "Đơn hàng đầu tiên của tôi đã đến hôm nay trong tình trạng hoàn hảo. Từ lúc tôi gửi câu hỏi về sản phẩm đến khi mua hàng, vận chuyển và bây giờ là giao hàng. Nhân viên của bạn, Bảo, đã luôn giữ liên lạc. Dịch vụ thật tuyệt vời. Tôi mong được mua sắm trên trang web của bạn trong tương lai và chắc chắn sẽ giới thiệu nó cho mọi người.",
     author: "Nguyễn Thị Kim Anh",
   };
 
