@@ -59,7 +59,7 @@ const Navigation = () => {
                                     cursor: "pointer",
                                     color: "#000",
                                 }}
-                                onMouseOver={(e) => (e.target.style.color = "#007bff")}
+                                onMouseOver={(e) => (e.target.style.color = "#9933CC")}
                                 onMouseOut={(e) => (e.target.style.color = "#000")}
                             >
                                 {category}
