@@ -84,7 +84,7 @@ const Navigation = () => {
                         <CiSearch size={20} color="#000" style={{ marginRight: "10px" }} />
                         <input
                             type="text"
-                            placeholder="Search entire store here..."
+                            placeholder="What are you looking for?"
                             style={{
                                 border: "none",
                                 outline: "none",
@@ -126,23 +126,55 @@ const Navigation = () => {
                         onClick={() => navigate('/cart')}
                     />
 
-                    {/* <BiUser size={24} color="#007bff" style={{ cursor: "pointer" }} /> */}
-
                     {/* Nút Đăng nhập và Đăng ký */}
                     <button
-                        className="btn btn-outline-primary"
-                        style={{ fontSize: "14px", borderRadius: "20px" }}
-                        onClick={() => navigate('/login')}
+                        className="btn"
+                        style={{
+                            fontSize: "14px",
+                            borderRadius: "20px",
+                            border: "1px solid black", // Viền đen
+                            color: "black", // Chữ đen
+                            fontWeight: "bold", // Chữ đen
+                        }}
+                        onClick={() => navigate("/login")}
+                        onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = "#9933CC"; // Màu nền hover
+                            e.target.style.borderColor = "#9933CC"; // Viền hover
+                            e.target.style.color = "white"; // Màu chữ hover
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = "transparent"; // Màu nền trở lại ban đầu
+                            e.target.style.borderColor = "black"; // Viền trở lại ban đầu
+                            e.target.style.color = "black"; // Chữ trở lại ban đầu
+                        }}
                     >
-                        Đăng nhập
+                        Sign in
                     </button>
                     <button
-                        className="btn btn-outline-primary"
-                        style={{ fontSize: "14px", borderRadius: "20px" }}
-                        onClick={() => navigate('/signup')}
+                        className="btn"
+                        style={{
+                            fontSize: "14px",
+                            borderRadius: "20px",
+                            border: "1px solid black", // Viền đen
+                            color: "black",
+                            fontWeight: "bold", // Chữ đen
+                        }}
+                        onClick={() => navigate("/signup")}
+                        onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = "#9933CC"; // Màu nền hover
+                            e.target.style.borderColor = "#9933CC"; // Viền hover
+                            e.target.style.color = "white"; // Màu chữ hover
+                        }}
+                        onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = "transparent"; // Màu nền trở lại ban đầu
+                            e.target.style.borderColor = "black"; // Viền trở lại ban đầu
+                            e.target.style.color = "black"; // Chữ trở lại ban đầu
+                        }}
                     >
-                        Đăng ký
+                        Sign up
                     </button>
+
+
                 </div>
             </div>
         </div>
