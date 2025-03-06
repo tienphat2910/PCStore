@@ -34,12 +34,13 @@ const Header = () => {
           </div>
 
           {/* Ở giữa: Địa chỉ + Contact Us */}
-          <div className="text-center">
-            <span className="d-block">
+          {/* Ở giữa: Địa chỉ + Contact Us */}
+          <div className="d-flex text-center align-items-center gap-3">
+            <span className="d-flex" style={{ fontSize: "14px", color: "#ACACAC" }}>
               Visit our showroom in 05 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City
             </span>
-            <div className="d-flex flex-column align-items-center mt-2">
-              <span>Contact Us</span>
+            <div className="d-flex flex-column align-items-center">
+              <span style={{ fontSize: "14px" }}>Contact Us</span>
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/412b8bf4e091415e1b80f6f19ef50c432c93c9f4914bef9ea6ea1e42ae365b7d"
