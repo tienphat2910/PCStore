@@ -1,7 +1,5 @@
-import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Features from "../Home/Features";
-import { NavLink } from "react-router-dom";
+import ProductFeatures from "../../components/ProductDisplay/ProductFeatures";
 
 const RegisterForm = () => {
   return (
@@ -16,13 +14,13 @@ const RegisterForm = () => {
 
         {/* Page Title */}
         <h1 className="mb-5 text-dark" style={{ fontWeight: 600, fontSize: "36px" }}>
-          Customer Registration
+          Đăng ký thành viên
         </h1>
 
         {/* Main Content */}
         <form className="p-5 shadow-sm" style={{ borderRadius: "12px", backgroundColor: '#F5F7FF' }}>
           <h2 className="text-dark mb-4" style={{ fontWeight: 600, fontSize: "22px" }}>
-            Create New Account
+            Tạo tài khoản mới
           </h2>
 
           {/* Full Name Input */}
@@ -94,7 +92,7 @@ const RegisterForm = () => {
               style={{ marginRight: "10px" }}
             />
             <label htmlFor="terms" className="text-dark" style={{ fontSize: "14px", fontWeight: 500 }}>
-              I agree to the Terms and Conditions
+              Tôi đồng ý với các điều khoản và điều kiện !
             </label>
           </div>
 
@@ -102,18 +100,21 @@ const RegisterForm = () => {
           <div className="d-flex gap-4 align-items-center mt-4">
             <button
               type="submit"
-              className="btn btn-primary"
-              style={{ fontSize: "14px", height: '50px', width: '208px', borderRadius: "50px", fontWeight: 600 }}
+              className="btn"
+              style={{
+                fontSize: "14px", height: '50px', width: '208px', borderRadius: "50px", fontWeight: 600, backgroundColor: "#9933CC",
+                color: "#fff"
+              }}
             >
-              Register
+              Đăng ký
             </button>
-            <a href="#" className="text-primary" style={{ fontSize: "16px", fontWeight: 500, textDecoration: "none" }}>
-              Already have an account?  <NavLink to="/login">Sign-In</NavLink>
+            <a href="/login" className="text" style={{ fontSize: "16px", fontWeight: 500, textDecoration: "none", color: "#9933CC" }}>
+              Đã có tài khoản?  Đăng nhập
             </a>
           </div>
         </form>
       </div>
-      <Features />
+      <ProductFeatures />
     </>
   );
 };
