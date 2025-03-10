@@ -9,7 +9,7 @@ const FeatureCard = ({ imageSrc, title, description }) => {
         color: "#ffffff",
         font: "300 14px/22px Poppins, sans-serif",
         margin: "0 auto",
-        maxWidth: "250px", // Giới hạn bề rộng mỗi card
+        maxWidth: "250px",
     };
 
     const imageStyle = {
