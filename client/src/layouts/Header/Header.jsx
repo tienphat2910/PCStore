@@ -37,7 +37,7 @@ const Header = () => {
           {/* Ở giữa: Địa chỉ + Contact Us */}
           <div className="d-flex text-center align-items-center gap-3">
             <span className="d-flex" style={{ fontSize: "14px", color: "#ACACAC" }}>
-              Visit our showroom in 05 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City
+              Visit our showroom in 12 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City
             </span>
             <div className="d-flex flex-column align-items-center">
               <span style={{ fontSize: "14px" }}>Contact Us</span>
