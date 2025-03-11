@@ -6,64 +6,31 @@ import IMAGES from "../../constants/images";
 import TestimonialCard from "../../components/ProductDisplay/TestimonialCard";
 import ProductFeatures from "../../components/ProductDisplay/ProductFeatures";
 import Icon from "../../constants/icons";
-
+import { useState, useEffect } from "react";
 const ProductDisplay = () => {
-  const newProducts = [
-    {
-      inStock: true,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/6110020049c709a850ef149e9595b5ea1e2201fe45de8e5923d13bf56d6cb079?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-    {
-      inStock: false,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/3efd8012a7b2c942d479de532c7895977a5481b40d8da289f3e36e2ce3fe7ac8?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-    {
-      inStock: true,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/395f982e7d6cca20d747dfe0927d442d6de2c1493f96955533d7689e0cc41386?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-    {
-      inStock: true,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/96fa115c1944ab3fb8d3ee946d81dc0e1da2458d10897f3ccce15543339ab3d9?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-    {
-      inStock: true,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/395f982e7d6cca20d747dfe0927d442d6de2c1493f96955533d7689e0cc41386?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-    {
-      inStock: true,
-      imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets/TEMP/395f982e7d6cca20d747dfe0927d442d6de2c1493f96955533d7689e0cc41386?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a",
-      rating: 4,
-      description: "EX DISPLAY : MSI Pro 16 Flex-036AU 15.6 MULTITOUCH All-In-On...",
-      originalPrice: "499.00",
-      discountedPrice: "499.00",
-    },
-  ];
+  const [newProducts, setNewProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("https://product-services-8x46.onrender.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data) {
+          const mappedProducts = data.data.map((product) => ({
+            inStock: product.stock > 0,
+            imageSrc: product.image,
+            rating: product.rating,
+            description: product.description,
+            originalPrice: Number(Math.round(product.price * 100) / 100), // Convert to number
+            discountedPrice: Number(
+              Math.round((product.price - product.discount) * 100) / 100
+            ), // Convert to number
+          }));
+          setNewProducts(mappedProducts);
+        }
+      })
+      .catch((err) => console.error("Error fetching products:", err));
+  }, []);
+
 
   const customBuilds = [
     {
@@ -305,8 +272,6 @@ const ProductDisplay = () => {
           }}
         />
       </div>
-
-
 
       <ProductSection title="Sản phẩm mới" products={newProducts} seeAllLink="Hiển thị tất cả" />
 
