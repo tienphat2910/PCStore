@@ -1,55 +1,123 @@
-import ProductCard from "../../components/ProductCard";
-import FilterSection from "../../components/Catalog/FilterSection";
+import { useEffect, useState } from "react";
 import BreadcrumbNav from "../../components/Catalog/BreadcrumbNav";
+import FilterSection from "../../components/Catalog/FilterSection";
 import Pagination from "../../components/Catalog/Pagination";
 import SortingControls from "../../components/Catalog/SortingControls";
-import { useState, useEffect } from "react";
+import ProductCard from "../../components/ProductCard";
 
 const Catalog = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({
+    category: '',
+    priceRange: '',
+    name: '',
+    sort: '',
+    page: 1,
+    limit: 12
+  });
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    try {
+      // Construct query parameters
+      const params = new URLSearchParams();
+      if (filters.category) params.append('category', filters.category);
+      if (filters.priceRange) params.append('priceRange', filters.priceRange);
+      if (filters.name) params.append('name', filters.name);
+      if (filters.sort) params.append('sort', filters.sort);
+      params.append('page', filters.page);
+      params.append('limit', filters.limit);
+
+      const response = await fetch(
+        `https://product-services-8x46.onrender.com/products-filters?${params.toString()}`
+      );
+      const data = await response.json();
+      
+      if (data.data) {
+        const mappedProducts = data.data.map((product) => ({
+          id: product._id,
+          name: product.name,
+          inStock: product.stock > 0,
+          imageSrc: product.image,
+          rating: product.rating,
+          description: product.description,
+          originalPrice: Number(product.price),
+          discountedPrice: Number(product.price - product.discount),
+          category: product.category,
+        }));
+        setProducts(mappedProducts);
+      }
+    } catch (err) {
+      console.error("Error fetching products:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetch("https://product-services-8x46.onrender.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data) {
-          // Map dữ liệu API thành đối tượng cần thiết cho ProductCard
-          const mappedProducts = data.data.map((product) => ({
-            inStock: product.stock > 0,
-            imageSrc: product.image,
-            rating: product.rating,
-            description: product.description,
-            // Đảm bảo kiểu number cho giá
-            originalPrice: Number(product.price),
-            discountedPrice: Number(product.price - product.discount),
-          }));
-          setProducts(mappedProducts);
-        }
-      })
-      .catch((err) =>
-        console.error("Error fetching products:", err)
-      );
-  }, []);
+    fetchProducts();
+  }, [filters]);
+
+  // Handle filter changes
+  const handleFilterChange = (filterType, value) => {
+    setFilters(prev => ({
+      ...prev,
+      [filterType]: value,
+      page: 1 // Reset page when filter changes
+    }));
+  };
+
+  // Handle sorting
+  const handleSort = (sortValue) => {
+    handleFilterChange('sort', sortValue);
+  };
+
+  // Handle pagination
+  const handlePageChange = (newPage) => {
+    handleFilterChange('page', newPage);
+  };
+
+  // Handle category filter
+  const handleCategoryClick = (category) => {
+    handleFilterChange('category', category);
+  };
+
+  // Clear all filters
+  const clearFilters = () => {
+    setFilters({
+      category: '',
+      priceRange: '',
+      name: '',
+      sort: '',
+      page: 1,
+      limit: 12
+    });
+  };
 
   return (
     <div className="container-fluid py-5">
       <div className="container">
         <header className="text-center mb-5">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/8f7eda2d580e4859685aeba8172aa7fcd82a523efdabed75e937630f486c6375?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/8f7eda2d580e4859685aeba8172aa7fcd82a523efdabed75e937630f486c6375"
             alt="Header banner"
             className="img-fluid mb-4"
           />
           <BreadcrumbNav />
-          <h1 className="h3 fw-semibold">MSI PS Series (20)</h1>
+          <h1 className="h3 fw-semibold">MSI PS Series ({products.length})</h1>
         </header>
 
-        <SortingControls />
+        <SortingControls onSort={handleSort} currentSort={filters.sort} />
 
         <div className="row">
           {/* Sidebar Filters */}
           <div className="col-12 col-md-3 mb-4">
-            <FilterSection />
+            <FilterSection 
+              onFilterChange={handleFilterChange}
+              filters={filters}
+              onPriceRangeChange={(range) => handleFilterChange('priceRange', range)}
+            />
 
             <div className="bg-light p-3 text-center mt-4 rounded">
               <h5 className="fw-bold mb-3">Brands</h5>
@@ -57,7 +125,7 @@ const Catalog = () => {
                 All Brands
               </button>
               <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/8eb535f7e707114e5ee989fcd93176aeeaf18454db55fea8c09b99dd5ce0ab90?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/8eb535f7e707114e5ee989fcd93176aeeaf18454db55fea8c09b99dd5ce0ab90"
                 alt="Brand logos"
                 className="img-fluid mt-3"
               />
@@ -76,7 +144,7 @@ const Catalog = () => {
             </div>
 
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6a78b711dbc58b395aef4fccb46f698313d5347dfbcb17eaca75f73108fd34f?placeholderIfAbsent=true&apiKey=1a2630dba26c44fe94fe53d5e705e42a"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6a78b711dbc58b395aef4fccb46f698313d5347dfbcb17eaca75f73108fd34f"
               alt="Promotional banner"
               className="img-fluid mt-4"
             />
@@ -86,25 +154,48 @@ const Catalog = () => {
           <div className="col-12 col-md-9">
             <div className="mb-4">
               <div className="d-flex gap-2 flex-wrap">
-                <button className="btn btn-outline-secondary">
+                <button 
+                  className={`btn ${filters.category === 'CUSTOM PCS' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleCategoryClick('CUSTOM PCS')}
+                >
                   CUSTOM PCS <span className="text-muted">(24)</span>
                 </button>
-                <button className="btn btn-outline-secondary">
+                <button 
+                  className={`btn ${filters.category === 'HP/COMPAQ PCS' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleCategoryClick('HP/COMPAQ PCS')}
+                >
                   HP/COMPAQ PCS <span className="text-muted">(24)</span>
                 </button>
-                <button className="btn btn-outline-secondary">Clear All</button>
+                <button 
+                  className="btn btn-outline-secondary"
+                  onClick={clearFilters}
+                >
+                  Clear All
+                </button>
               </div>
             </div>
 
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4">
-              {products.map((product, index) => (
-                <div key={index} className="col p-0">
-                  <ProductCard {...product} />
+            {loading ? (
+              <div className="text-center py-5">
+                <div className="spinner-border text-primary" role="status">
+                  <span className="visually-hidden">Loading...</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 gy-4">
+                {products.map((product, index) => (
+                  <div key={product.id || index} className="col p-0">
+                    <ProductCard {...product} />
+                  </div>
+                ))}
+              </div>
+            )}
 
-            <Pagination />
+            <Pagination 
+              currentPage={filters.page}
+              onPageChange={handlePageChange}
+              totalPages={Math.ceil(products.length / filters.limit)}
+            />
 
             <article className="mt-5 small text-muted">
               <p className="mb-3">

@@ -1,84 +1,48 @@
+import PropTypes from 'prop-types';
 
-const SortingControls = () => {
+const SortingControls = ({ onSort, currentSort }) => {
   return (
-    <div className="row align-items-center mb-4">
-      <div className="col-auto">
-        <button className="btn btn-outline-secondary">‹ Back</button>
+    <div className="d-flex justify-content-between align-items-center mb-4">
+      <div className="d-flex align-items-center">
+        <label className="me-2">Sort By:</label>
+        <select 
+          className="form-select" 
+          value={currentSort}
+          onChange={(e) => onSort(e.target.value)}
+        >
+          <option value="">Default</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="name_asc">Name: A to Z</option>
+          <option value="name_desc">Name: Z to A</option>
+          <option value="rating_desc">Rating: High to Low</option>
+        </select>
       </div>
-      <div className="col">
-        <div className="d-flex align-items-center gap-3 flex-wrap">
-          <span className="text-muted">Items 1-35 of 61</span>
-
-          <div className="dropdown">
-            <button
-              className="btn btn-outline-secondary dropdown-toggle"
-              type="button"
-              id="sortDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span className="text-muted">Sort By: </span>Position
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="sortDropdown">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Position
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Price
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Name
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="dropdown">
-            <button
-              className="btn btn-outline-secondary dropdown-toggle"
-              type="button"
-              id="showDropdown"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span className="text-muted">Show: </span>35 per page
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="showDropdown">
-              <li>
-                <a className="dropdown-item" href="#">
-                  35 per page
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  50 per page
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  100 per page
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="btn-group" role="group" aria-label="View options">
-            <button type="button" className="btn btn-outline-secondary">
-              <i className="bi bi-grid"></i>
-            </button>
-            <button type="button" className="btn btn-outline-secondary">
-              <i className="bi bi-list"></i>
-            </button>
-          </div>
+      
+      <div className="d-flex align-items-center">
+        <label className="me-2">Show:</label>
+        <select className="form-select me-2">
+          <option>12</option>
+          <option>24</option>
+          <option>48</option>
+        </select>
+        
+        <div className="btn-group">
+          <button className="btn btn-outline-secondary">
+            <i className="bi bi-grid"></i>
+          </button>
+          <button className="btn btn-outline-secondary">
+            <i className="bi bi-list"></i>
+          </button>
         </div>
       </div>
     </div>
   );
+};
+
+SortingControls.propTypes = {
+  onSort: PropTypes.func.isRequired,
+  currentSort: PropTypes.string.isRequired
 };
 
 export default SortingControls;
