@@ -1,11 +1,10 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function ProductDetails() {
     return (
         <div className="container my-4">
             {/* Breadcrumb */}
-            <nav aria-label="breadcrumb" className="mb-3" style={{
+            {/* <nav aria-label="breadcrumb" className="mb-3" style={{
                 margin: '57px 0 60px 0',
                 display: 'flex'
 
@@ -21,7 +20,7 @@ function ProductDetails() {
                         MSI Series
                     </li>
                 </ol>
-            </nav>
+            </nav> */}
 
             <div className="row">
                 {/* Cột trái: Thông tin chi tiết */}
@@ -67,7 +66,7 @@ function ProductDetails() {
                         + MORE INFORMATION
                     </a>
 
-                  
+
                 </div>
 
                 {/* Cột phải: Ảnh sản phẩm, chấm tròn, thông tin thanh toán */}
@@ -98,7 +97,7 @@ function ProductDetails() {
                         className="img-fluid mb-3"
                     />
 
-                    
+
                 </div>
             </div>
         </div>

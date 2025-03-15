@@ -33,7 +33,7 @@ const Catalog = () => {
         `https://product-services-8x46.onrender.com/products-filters?${params.toString()}`
       );
       const data = await response.json();
-      
+
       if (data.data) {
         const mappedProducts = data.data.map((product) => ({
           id: product._id,
@@ -113,7 +113,7 @@ const Catalog = () => {
         <div className="row">
           {/* Sidebar Filters */}
           <div className="col-12 col-md-3 mb-4">
-            <FilterSection 
+            <FilterSection
               onFilterChange={handleFilterChange}
               filters={filters}
               onPriceRangeChange={(range) => handleFilterChange('priceRange', range)}
@@ -154,19 +154,19 @@ const Catalog = () => {
           <div className="col-12 col-md-9">
             <div className="mb-4">
               <div className="d-flex gap-2 flex-wrap">
-                <button 
+                <button
                   className={`btn ${filters.category === 'CUSTOM PCS' ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => handleCategoryClick('CUSTOM PCS')}
                 >
                   CUSTOM PCS <span className="text-muted">(24)</span>
                 </button>
-                <button 
+                <button
                   className={`btn ${filters.category === 'HP/COMPAQ PCS' ? 'btn-primary' : 'btn-outline-secondary'}`}
                   onClick={() => handleCategoryClick('HP/COMPAQ PCS')}
                 >
                   HP/COMPAQ PCS <span className="text-muted">(24)</span>
                 </button>
-                <button 
+                <button
                   className="btn btn-outline-secondary"
                   onClick={clearFilters}
                 >
@@ -191,7 +191,7 @@ const Catalog = () => {
               </div>
             )}
 
-            <Pagination 
+            <Pagination
               currentPage={filters.page}
               onPageChange={handlePageChange}
               totalPages={Math.ceil(products.length / filters.limit)}
