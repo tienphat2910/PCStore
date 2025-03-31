@@ -1,4 +1,3 @@
-import * as React from "react";
 import CheckoutForm from "./CheckoutForm";
 import OrderSummary from "./OrderSummary";
 import { useNavigate } from "react-router-dom";

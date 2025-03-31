@@ -1,20 +1,22 @@
 import IMAGES from "../../constants/images";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  
   const footerLinks = {
     "THÔNG TIN": [
-      "Về chúng tôi",
-      "Liên hệ",
-      "Hướng dẫn mua hàng",
-      "Hướng dẫn trả góp",
-      "Hướng dẫn thanh toán",
+      { text: "Về chúng tôi", path: "/about-us" },
+      { text: "Liên hệ", path: "/contact" },
+      { text: "Hướng dẫn mua hàng", path: "/purchase-guide" },
+      { text: "Hướng dẫn trả góp", path: "/installment-guide" },
+      { text: "Hướng dẫn thanh toán", path: "/payment-guide" },
     ],
     "CHÍNH SÁCH": [
-      "Chính sách bảo mật",
-      "Chính sách bảo hành",
-      "Chính sách vận chuyển",
+      { text: "Chính sách bảo mật", path: "/privacy-policy" },
+      { text: "Chính sách bảo hành", path: "/warranty-policy" },
+      { text: "Chính sách vận chuyển", path: "/shipping-policy" },
     ],
-
   };
 
   return (
@@ -98,8 +100,6 @@ const Footer = () => {
         </form>
       </div>
 
-
-
       {/* Footer Links */}
       <div
         style={{
@@ -126,16 +126,17 @@ const Footer = () => {
             {links.map((link, index) => (
               <a
                 key={index}
-                href="#"
+                onClick={() => navigate(link.path)}
                 style={{
                   color: "white",
                   textDecoration: "none",
                   display: "block",
                   fontSize: "14px",
                   marginBottom: "8px",
+                  cursor: "pointer",
                 }}
               >
-                {link}
+                {link.text}
               </a>
             ))}
           </div>
