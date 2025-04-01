@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
-  
+
   const footerLinks = {
     "THÔNG TIN": [
       { text: "Về chúng tôi", path: "/about-us" },
@@ -20,225 +20,99 @@ const Footer = () => {
   };
 
   return (
-    <footer
-      style={{
-        backgroundColor: "#000",
-        padding: "10px 20px",
-        color: "white",
-        fontFamily: "Poppins, sans-serif",
-      }}
-    >
-      {/* Newsletter Section */}
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          textAlign: "left", // Căn trái cho phần text
-          marginBottom: "40px",
-          display: "flex", // Dùng flexbox để chia layout
-          justifyContent: "space-between", // Căn phần text và form sang hai bên
-          alignItems: "center", // Căn giữa dọc
-        }}
-      >
-        <div className="mt-4">
-          <h2 style={{ fontSize: "28px", fontWeight: "600", marginBottom: "10px" }}>
-            Đăng ký nhận bản tin của chúng tôi
-          </h2>
-          <p style={{ fontSize: "16px", marginBottom: "20px" }}>
-            Trở thành người đầu tiên biết về những ưu đãi mới nhất
-          </p>
+    <footer className="bg-black text-white py-5">
+      <div className="container">
+        {/* Newsletter */}
+        <div className="row align-items-center mb-4">
+          <div className="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <h2 className="fs-4 fw-bold">Đăng ký nhận bản tin</h2>
+            <p className="fs-6">Trở thành người đầu tiên nhận ưu đãi mới nhất</p>
+          </div>
+          <div className="col-12 col-md-6">
+            <form className="d-flex flex-column flex-sm-row gap-2 justify-content-center justify-content-md-end">
+              <input
+                type="email"
+                className="form-control w-100 w-sm-auto py-2 px-3 rounded-3 border-0 bg-dark text-white"
+                placeholder="Your Email"
+                required
+                onFocus={(e) => e.target.style.border = "1px solid #9933CC"} // Chỉnh border khi focus
+                onBlur={(e) => e.target.style.border = "none"} // Xóa border khi blur
+                style={{
+                  transition: "all 0.3s ease",
+                }}
+              />
+              <button
+                type="submit"
+                className="btn btn-primary px-4 py-2 rounded-3 mt-2 mt-sm-0"
+                style={{
+                  backgroundColor: "#9933CC",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = "#ff66cc"; // Màu nền khi hover
+                  e.target.style.transform = "scale(1.05)"; // Phóng to khi hover
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = "#9933CC"; // Trả lại màu khi không hover
+                  e.target.style.transform = "scale(1)"; // Trả lại kích thước
+                }}
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
 
-        <form
-          style={{
-            display: "flex",
-            gap: "10px",
-            flexWrap: "wrap",
-            justifyContent: "flex-end", // Căn phải cho phần input và button
-            maxWidth: "100%", // Đảm bảo form không vượt quá chiều rộng container
-          }}
-        >
-          <input
-            type="email"
-            placeholder="Your Email"
-            style={{
-              padding: "10px 20px",
-              borderRadius: "5px",
-              border: "1px solid #fff",
-              backgroundColor: "#000",
-              color: "white",
-              fontSize: "14px",
-              width: "250px",
-              maxWidth: "100%",
-            }}
-            required
-          />
-          <button
-            type="submit"
-            style={{
-              backgroundColor: "#9933CC",
-              color: "white",
-              padding: "10px 25px",
-              borderRadius: "5px",
-              border: "none",
-              fontSize: "14px",
-              fontWeight: "500",
-              cursor: "pointer",
-              transition: "all 0.3s ease", // Hiệu ứng chuyển mượt mà
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "#ff66cc"; // Màu nền khi hover
-              e.target.style.transform = "scale(1.05)"; // Phóng to khi hover
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = "#9933CC"; // Màu nền trở lại khi không hover
-              e.target.style.transform = "scale(1)"; // Trả lại kích thước ban đầu
-            }}
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
-
-      {/* Footer Links */}
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "30px",
-          justifyContent: "space-between",
-          marginBottom: "30px",
-        }}
-      >
-        {Object.entries(footerLinks).map(([title, links]) => (
-          <div key={title} style={{ flex: "1", minWidth: "200px" }}>
-            <h3
-              style={{
-                fontSize: "18px",
-                fontWeight: "600",
-                marginBottom: "10px",
-              }}
-            >
-              {title}
-            </h3>
-            {links.map((link, index) => (
-              <a
-                key={index}
-                onClick={() => navigate(link.path)}
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                  display: "block",
-                  fontSize: "14px",
-                  marginBottom: "8px",
-                  cursor: "pointer",
-                }}
-              >
-                {link.text}
-              </a>
-            ))}
-          </div>
-        ))}
-        {/* Address Section */}
-        <div style={{ display: "flex", flexDirection: "column", marginBottom: "40px" }}>
-          {/* Địa chỉ */}
-          <div style={{ flex: "1", minWidth: "200px", marginBottom: "40px" }}>
-            <h3
-              style={{
-                fontSize: "18px",
-                fontWeight: "600",
-                marginBottom: "10px",
-              }}
-            >
-              ĐỊA CHỈ CỦA CHÚNG TÔI
-            </h3>
-            <p style={{ fontSize: "14px", lineHeight: "1.8" }}>
-              Địa chỉ: 12 Nguyễn Văn Bảo, Phường 04, Quận Gò Vấp, Thành phố Hồ Chí Minh, Việt Nam<br />
-              Phones:{" "}
-              <a
-                href="tel:0376549230"
-                style={{ color: "#fff", textDecoration: "none", fontWeight: "bold" }}
-              >
-                +84-376-549-230
-              </a>
-              <br />
-              Email:{" "}
-              <a
-                href="mailto:shop@email.com"
-                style={{ color: "#fff", textDecoration: "none", fontWeight: "bold" }}
-              >
-                shop@email.com
-              </a>
-            </p>
-          </div>
-
-          {/* Đơn vị vận chuyển và Cách thức thanh toán */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column", // Column layout
-              gap: "20px",
-              justifyContent: "space-between",
-            }}
-          >
-            {/* Đơn vị vận chuyển */}
-            <div>
-              <h3
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "600",
-                  marginBottom: "10px",
-                }}
-              >
-                ĐƠN VỊ VẬN CHUYỂN
-              </h3>
-              <div style={{ display: "flex", gap: "5px" }}>
-                <img src={IMAGES.EMS} alt="EMS" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.GHN} alt="GHN" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.NINJAVAN} alt="NINJAVAN" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.LEX} alt="LEX" style={{ width: "50px", objectFit: "contain" }} />
-              </div>
+        {/* Footer Links */}
+        <div className="row g-4">
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title} className="col-12 col-md-4">
+              <h3 className="fs-6 fw-bold">{title}</h3>
+              {links.map((link, index) => (
+                <a key={index} onClick={() => navigate(link.path)} className="d-block text-white text-decoration-none small">
+                  {link.text}
+                </a>
+              ))}
             </div>
+          ))}
 
-            {/* Cách thức thanh toán */}
-            <div>
-              <h3
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "600",
-                  marginBottom: "10px",
-                }}
-              >
-                CÁCH THỨC THANH TOÁN
-              </h3>
-              <div style={{ display: "flex", gap: "10px" }}>
-                <img src={IMAGES.CASH} alt="CASH" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.MOMO} alt="MOMO" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.VISA} alt="VISA" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.MASTER} alt="MASTER" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.VNPAY} alt="VNPAY" style={{ width: "50px", objectFit: "contain" }} />
-                <img src={IMAGES.ZALOPAY} alt="ZALOPAY" style={{ width: "50px", objectFit: "contain" }} />
-              </div>
+          {/* Address Section */}
+          <div className="col-12 col-md-4">
+            <h3 className="fs-6 fw-bold">ĐỊA CHỈ CỦA CHÚNG TÔI</h3>
+            <p className="small">12 Nguyễn Văn Bảo, Gò Vấp, HCM</p>
+            <p className="small">📞 <a href="tel:0376549230" className="text-white">+84-376-549-230</a></p>
+            <p className="small">✉️ <a href="mailto:shop@email.com" className="text-white">shop@email.com</a></p>
+          </div>
+        </div>
+
+        {/* Payment & Shipping */}
+        <div className="row mt-4 text-center text-md-start">
+          <div className="col-12 col-md-6 mb-3 mb-md-0">
+            <h3 className="fs-6 fw-bold">ĐƠN VỊ VẬN CHUYỂN</h3>
+            <div className="d-flex gap-2 justify-content-center justify-content-md-start">
+              <img src={IMAGES.EMS} alt="EMS" className="img-fluid" style={{ width: "50px" }} />
+              <img src={IMAGES.GHN} alt="GHN" className="img-fluid" style={{ width: "50px" }} />
+              <img src={IMAGES.NINJAVAN} alt="NINJAVAN" className="img-fluid" style={{ width: "50px" }} />
+            </div>
+          </div>
+          <div className="col-12 col-md-6">
+            <h3 className="fs-6 fw-bold">CÁCH THỨC THANH TOÁN</h3>
+            <div className="d-flex gap-2 justify-content-center justify-content-md-start">
+              <img src={IMAGES.CASH} alt="CASH" className="img-fluid" style={{ width: "40px" }} />
+              <img src={IMAGES.MOMO} alt="MOMO" className="img-fluid" style={{ width: "40px" }} />
+              <img src={IMAGES.VISA} alt="VISA" className="img-fluid" style={{ width: "40px" }} />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer Bottom */}
-      <div
-        style={{
-          borderTop: "1px solid rgba(255, 255, 255, 0.2)",
-          paddingTop: "20px",
-          textAlign: "center",
-        }}
-      >
-        <p style={{ fontSize: "14px", color: "#888" }}>
-          Copyright © 2025 Solomon Team
-        </p>
+        {/* Footer Bottom */}
+        <div className="border-top mt-4 pt-3 text-center small text-secondary">
+          © 2025 PCStore. All Rights Reserved.
+        </div>
       </div>
     </footer>
+
+
   );
 };
 
