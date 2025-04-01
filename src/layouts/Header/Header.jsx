@@ -22,7 +22,7 @@ const Header = () => {
         <div className="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
           {/* Góc trái: Ngày & Giờ */}
           <div className="d-flex align-items-center gap-2">
-            <span className="small">Mon-Thu: 9:00 AM - 5:30 PM</span>
+            <span className="small">Open: Mon-Thu: 9:00 AM - 5:30 PM</span>
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/70122338c4f8b9fbc27c3c2fa943264aadc19470f1829739d971828944e51456"
