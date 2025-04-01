@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useScrollToTop from "../../hooks/useScrollToTop";
 
-const PrivacyPolicy = () => {
+const PrivacyPolicyPage = () => {
     const navigate = useNavigate();
     useScrollToTop();
 
@@ -11,19 +11,43 @@ const PrivacyPolicy = () => {
                 backgroundColor: "rgba(255, 255, 255, 1)",
                 display: "flex",
                 flexDirection: "column",
+                margin: '30px 0',
                 overflow: "hidden",
-                margin: '30px 0'
+                paddingBottom: "30px"
             }}
         >
+            {/* Ảnh trên cùng */}
+            <aside
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: "20px 0",
+                }}
+            >
+                <img
+                    src="https://dataprivacymanager.net/wp-content/uploads/2020/12/Tips-for-Easy-to-Understand-Website-Privacy-Policy-Writing-1.png"
+                    style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        borderRadius: "10px",
+                        boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                    }}
+                />
+            </aside>
+
+            {/* Nội dung chính trong khung */}
             <main
                 style={{
-                    alignSelf: "center",
-                    display: "flex",
-                    marginTop: "20px",
                     width: "100%",
-                    maxWidth: "1200px",
+                    display: "flex",
                     flexDirection: "column",
                     alignItems: "start",
+                    padding: "20px",
+                    backgroundColor: "#f9f9f9",  // Màu nền khung
+                    borderRadius: "8px",  // Viền bo tròn
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",  // Đổ bóng cho khung
+                    marginTop: "20px", // Điều chỉnh khoảng cách với phần ảnh
                 }}
                 className="container"
             >
@@ -35,8 +59,13 @@ const PrivacyPolicy = () => {
                             font: "300 12px Poppins, sans-serif",
                         }}
                     >
-                        <span style={{ fontWeight: "400", color: "rgba(0,0,0,1)", cursor: "pointer" }} onClick={() => navigate('/')}>Home </span>
-                        <span style={{ fontWeight: "400", color: "rgba(1,86,255,1)" }}>›</span>
+                        <span
+                            style={{ fontWeight: "400", color: "rgba(0,0,0,1)", cursor: "pointer" }}
+                            onClick={() => navigate('/')}
+                        >
+                            Home
+                        </span>
+                        <span style={{ fontWeight: "400", color: "rgba(1,86,255,1)" }}> › </span>
                         <span style={{ fontWeight: "400", color: "rgba(0,0,0,1)" }}> Chính sách bảo mật</span>
                     </div>
                 </nav>
@@ -46,63 +75,63 @@ const PrivacyPolicy = () => {
                 <div style={{ fontFamily: "Poppins, sans-serif", lineHeight: "1.6" }}>
                     <section style={{ marginBottom: "30px" }}>
                         <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>1. Thông tin chúng tôi thu thập</h2>
-                        <p>Chúng tôi thu thập thông tin mà bạn cung cấp trực tiếp cho chúng tôi, bao gồm:</p>
+                        <p>Chúng tôi thu thập thông tin cá nhân của khách hàng bao gồm:</p>
                         <ul>
-                            <li>Tên và thông tin liên hệ</li>
-                            <li>Địa chỉ thanh toán và giao hàng</li>
-                            <li>Thông tin thanh toán</li>
-                            <li>Lịch sử đơn hàng</li>
+                            <li>Họ và tên</li>
+                            <li>Địa chỉ email</li>
+                            <li>Số điện thoại</li>
+                            <li>Địa chỉ giao hàng và thanh toán</li>
+                            <li>Lịch sử giao dịch trên website</li>
                         </ul>
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>2. Cách chúng tôi sử dụng thông tin</h2>
-                        <p>Chúng tôi sử dụng thông tin thu thập để:</p>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>2. Mục đích sử dụng thông tin</h2>
+                        <p>Chúng tôi sử dụng thông tin cá nhân của bạn để:</p>
                         <ul>
-                            <li>Xử lý đơn hàng và thanh toán của bạn</li>
-                            <li>Liên hệ với bạn về đơn hàng và dịch vụ</li>
-                            <li>Gửi thông tin marketing (với sự đồng ý của bạn)</li>
-                            <li>Cải thiện website và dịch vụ của chúng tôi</li>
+                            <li>Xử lý đơn hàng và thanh toán</li>
+                            <li>Liên hệ hỗ trợ và chăm sóc khách hàng</li>
+                            <li>Gửi thông tin khuyến mãi (nếu bạn đồng ý)</li>
+                            <li>Cải thiện chất lượng dịch vụ và trải nghiệm người dùng</li>
                         </ul>
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
                         <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>3. Chia sẻ thông tin</h2>
-                        <p>Chúng tôi không bán thông tin cá nhân của bạn. Chúng tôi có thể chia sẻ thông tin với:</p>
+                        <p>Chúng tôi cam kết bảo vệ thông tin cá nhân và chỉ chia sẻ khi cần thiết với:</p>
                         <ul>
-                            <li>Nhà cung cấp dịch vụ hỗ trợ hoạt động</li>
-                            <li>Cơ quan thực thi pháp luật khi được yêu cầu</li>
-                            <li>Đối tác kinh doanh với sự đồng ý của bạn</li>
+                            <li>Đối tác vận chuyển để giao hàng</li>
+                            <li>Nhà cung cấp dịch vụ thanh toán</li>
+                            <li>Cơ quan pháp luật khi có yêu cầu</li>
                         </ul>
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
                         <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>4. Bảo mật dữ liệu</h2>
-                        <p>Chúng tôi thực hiện các biện pháp bảo mật phù hợp để bảo vệ thông tin cá nhân của bạn khỏi truy cập, thay đổi, tiết lộ hoặc phá hủy trái phép.</p>
+                        <p>Chúng tôi áp dụng các biện pháp bảo mật để đảm bảo an toàn cho dữ liệu cá nhân của khách hàng:</p>
+                        <ul>
+                            <li>Mã hóa dữ liệu khi truyền tải</li>
+                            <li>Chỉ nhân viên có thẩm quyền mới được truy cập</li>
+                            <li>Không lưu trữ thông tin thẻ thanh toán</li>
+                        </ul>
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>5. Quyền của bạn</h2>
-                        <p>Bạn có quyền:</p>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>5. Quyền của khách hàng</h2>
+                        <p>Khách hàng có quyền:</p>
                         <ul>
-                            <li>Truy cập thông tin cá nhân của bạn</li>
-                            <li>Sửa thông tin không chính xác</li>
-                            <li>Yêu cầu xóa thông tin của bạn</li>
-                            <li>Từ chối nhận thông tin marketing</li>
+                            <li>Yêu cầu truy cập và chỉnh sửa thông tin cá nhân</li>
+                            <li>Yêu cầu xóa thông tin khi không còn sử dụng</li>
+                            <li>Hủy đăng ký nhận tin tức và khuyến mãi</li>
                         </ul>
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
                         <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>6. Liên hệ</h2>
-                        <p>Nếu bạn có bất kỳ câu hỏi nào về Chính sách Bảo mật này, vui lòng liên hệ với chúng tôi:</p>
+                        <p>Quý khách có thể liên hệ với chúng tôi để được hỗ trợ về chính sách bảo mật:</p>
                         <p>Email: privacy@pcstore.com</p>
                         <p>Hotline: (123) 456-7890</p>
                         <p>Địa chỉ: 12 Nguyễn Văn Bảo, Phường 04, Quận Gò Vấp, TP.HCM</p>
-                    </section>
-
-                    <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>7. Cập nhật chính sách</h2>
-                        <p>Chúng tôi có thể cập nhật Chính sách Bảo mật này theo thời gian. Chúng tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đăng Chính sách Bảo mật mới trên trang này.</p>
                     </section>
                 </div>
             </main>
@@ -110,4 +139,4 @@ const PrivacyPolicy = () => {
     );
 };
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

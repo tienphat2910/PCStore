@@ -8,11 +8,13 @@ const PurchaseGuide = () => {
     return (
         <div
             style={{
-                backgroundColor: "rgba(255, 255, 255, 1)",
+                backgroundColor: "#f9f9f9", // Màu nền nhẹ nhàng
                 display: "flex",
                 flexDirection: "column",
                 overflow: "hidden",
-                margin: '30px 0'
+                margin: '30px 0',
+                borderRadius: '10px', // Bo góc nhẹ cho div chính
+                boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', // Thêm hiệu ứng đổ bóng cho đẹp mắt
             }}
         >
             <main
@@ -24,28 +26,44 @@ const PurchaseGuide = () => {
                     maxWidth: "1200px",
                     flexDirection: "column",
                     alignItems: "start",
+                    padding: '20px',
+                    backgroundColor: 'white',
+                    borderRadius: '10px',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
                 }}
                 className="container"
             >
                 <nav aria-label="Breadcrumb">
                     <div
                         style={{
-                            color: "rgba(163, 163, 163, 1)",
+                            color: "#A3A3A3",
                             textAlign: "center",
                             font: "300 12px Poppins, sans-serif",
                         }}
                     >
-                        <span style={{ fontWeight: "400", color: "rgba(0,0,0,1)", cursor: "pointer" }} onClick={() => navigate('/')}>Home </span>
-                        <span style={{ fontWeight: "400", color: "rgba(1,86,255,1)" }}>›</span>
-                        <span style={{ fontWeight: "400", color: "rgba(0,0,0,1)" }}> Hướng dẫn mua hàng</span>
+                        <span 
+                            style={{ 
+                                fontWeight: "400", 
+                                color: "#000", 
+                                cursor: "pointer", 
+                                transition: 'color 0.3s' 
+                            }} 
+                            onClick={() => navigate('/')}
+                            onMouseEnter={(e) => e.target.style.color = '#0156FF'} 
+                            onMouseLeave={(e) => e.target.style.color = '#000'}
+                        >
+                            Home
+                        </span>
+                        <span style={{ fontWeight: "400", color: "#0156FF" }}>›</span>
+                        <span style={{ fontWeight: "400", color: "#000" }}> Hướng dẫn mua hàng</span>
                     </div>
                 </nav>
 
-                <h1 style={{ fontSize: "32px", marginTop: "20px", marginBottom: "30px" }}>Hướng dẫn mua hàng</h1>
+                <h1 style={{ fontSize: "32px", marginTop: "20px", marginBottom: "30px", color: '#0156FF' }}>Hướng dẫn mua hàng</h1>
 
                 <div style={{ fontFamily: "Poppins, sans-serif", lineHeight: "1.6" }}>
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>1. Cách đặt hàng</h2>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px", color: '#0156FF' }}>1. Cách đặt hàng</h2>
                         <p>Có 2 cách để đặt hàng:</p>
                         <ul>
                             <li>Đặt hàng trực tiếp trên website</li>
@@ -63,7 +81,7 @@ const PurchaseGuide = () => {
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>2. Thông tin cần cung cấp</h2>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px", color: '#0156FF' }}>2. Thông tin cần cung cấp</h2>
                         <ul>
                             <li>Họ và tên người nhận</li>
                             <li>Số điện thoại liên hệ</li>
@@ -74,7 +92,7 @@ const PurchaseGuide = () => {
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>3. Xác nhận đơn hàng</h2>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px", color: '#0156FF' }}>3. Xác nhận đơn hàng</h2>
                         <p>Sau khi đặt hàng thành công:</p>
                         <ul>
                             <li>Hệ thống sẽ gửi email xác nhận đơn hàng</li>
@@ -84,7 +102,7 @@ const PurchaseGuide = () => {
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>4. Hủy đơn hàng</h2>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px", color: '#0156FF' }}>4. Hủy đơn hàng</h2>
                         <p>Khách hàng có thể hủy đơn hàng trong các trường hợp:</p>
                         <ul>
                             <li>Đơn hàng chưa được xử lý</li>
@@ -100,7 +118,7 @@ const PurchaseGuide = () => {
                     </section>
 
                     <section style={{ marginBottom: "30px" }}>
-                        <h2 style={{ fontSize: "24px", marginBottom: "15px" }}>5. Liên hệ hỗ trợ</h2>
+                        <h2 style={{ fontSize: "24px", marginBottom: "15px", color: '#0156FF' }}>5. Liên hệ hỗ trợ</h2>
                         <p>Nếu cần hỗ trợ thêm, vui lòng liên hệ:</p>
                         <p>Hotline: (123) 456-7890</p>
                         <p>Email: support@pcstore.com</p>
@@ -111,4 +129,4 @@ const PurchaseGuide = () => {
     );
 };
 
-export default PurchaseGuide; 
+export default PurchaseGuide;
