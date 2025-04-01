@@ -46,7 +46,7 @@ function ProductDetails() {
                         <li>SO-DIMM 16GB (8GB x 1) DDR4 2666MHz</li>
                         <li>2 total slots (64GB Max.)</li>
                         <li>512GB (1 x 512GB) M.2 NVMe PCIe Gen3x4 SSD</li>
-                        <li>2TB (2.5") 5400RPM</li>
+                        <li>2TB (2.5) 5400RPM</li>
                         <li>Gaming Keyboard GK30 + Gaming Mouse GM11</li>
                         <li>3.5 HDD (0/0), 2.5 HDD/SSD (0/0), M.2 (1/0)</li>
                         <li>Intel WGI219V Ethernet (10/100/1000M)</li>
