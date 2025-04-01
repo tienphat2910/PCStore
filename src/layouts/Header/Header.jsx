@@ -18,12 +18,11 @@ const Header = () => {
   return (
     <div>
       {/* Phần Header */}
-      <header className="bg-dark text-white py-3">
-        <div className="container d-flex justify-content-between align-items-center">
-
+      <header className="bg-dark text-white py-2">
+        <div className="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center text-center text-md-start">
           {/* Góc trái: Ngày & Giờ */}
           <div className="d-flex align-items-center gap-2">
-            <span>Mon-Thu: 9:00 AM - 5:30 PM</span>
+            <span className="small">Mon-Thu: 9:00 AM - 5:30 PM</span>
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/70122338c4f8b9fbc27c3c2fa943264aadc19470f1829739d971828944e51456"
@@ -34,12 +33,12 @@ const Header = () => {
           </div>
 
           {/* Ở giữa: Địa chỉ + Contact Us */}
-          <div className="d-flex text-center align-items-center gap-3">
-            <span className="d-flex" style={{ fontSize: "14px", color: "#ACACAC" }}>
+          <div className="d-flex flex-column flex-md-row text-center align-items-center gap-2">
+            <span className="small text-white text-md-start">
               Visit our showroom in 12 Nguyen Van Bao, Ward 4, Go Vap District, Ho Chi Minh City
             </span>
             <div className="d-flex flex-column align-items-center">
-              <span style={{ fontSize: "14px" }}>Contact Us</span>
+              <span className="small">Contact Us</span>
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/412b8bf4e091415e1b80f6f19ef50c432c93c9f4914bef9ea6ea1e42ae365b7d"
@@ -52,7 +51,7 @@ const Header = () => {
 
           {/* Góc phải: Call Us + Icon */}
           <div className="d-flex align-items-center gap-2">
-            <span>Call Us: +84-376-549-230</span>
+            <span className="small">Call Us: +84-376-549-230</span>
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/d92b3bc2d46dd318876b6ab34a06229309543bc9ba202265c4c42e9df27e47df"
@@ -73,12 +72,8 @@ const Header = () => {
 
       {/* Thanh Navigation cố định khi scroll */}
       <div
-        style={{
-          position: isSticky ? "fixed" : "static",
-          top: isSticky ? "0" : "auto",
-          width: "100%",
-          zIndex: "1000",
-        }}
+        className={`bg-white shadow-sm ${isSticky ? "fixed-top" : "static"}`}
+        style={{ zIndex: 1000 }}
       >
         <Navigation />
       </div>
